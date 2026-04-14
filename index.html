@@ -3,21 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mrinank Portfolio</title>
-    <meta name="description" content="Portfolio website with multiple resume versions for software, electronics, and embedded roles.">
+    <title>Mrinank | Resume Portfolio</title>
+    <meta name="description" content="Professional portfolio page with role-specific resumes for software, electronics, and embedded opportunities.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #f4efe7;
-            --paper: #fffdf9;
-            --ink: #1f1c1a;
-            --muted: #5f5854;
-            --accent: #007f5f;
-            --accent-2: #3a86ff;
-            --line: #d8cfc4;
-            --shadow: 0 12px 30px rgba(25, 17, 10, 0.11);
+            --bg: #0f1724;
+            --surface: #172334;
+            --surface-soft: #121d2d;
+            --text: #e8eef7;
+            --muted: #a7b7cb;
+            --border: #2a3b53;
+            --primary: #6ea8ff;
+            --primary-deep: #3c7be0;
+            --success: #65c4a1;
+            --shadow: 0 20px 34px rgba(2, 7, 15, 0.45);
+            --bg-grad-1: #1d2e45;
+            --bg-grad-2: #22324a;
+            --bg-grad-3: #0f1724;
+            --bg-top: #111c2b;
+            --hero-grad-start: #1b2a3d;
+            --hero-grad-end: #162334;
+            --topbar-bg: rgba(18, 28, 42, 0.86);
+            --focus-bg: #1a2739;
+            --share-link-bg: #101b2a;
+            --radius-lg: 24px;
+            --radius-md: 16px;
+            --radius-sm: 12px;
+        }
+
+        html[data-theme="light"] {
+            --bg: #edf1f5;
+            --surface: #ffffff;
+            --surface-soft: #f4f7fb;
+            --text: #17263c;
+            --muted: #53657d;
+            --border: #d4dde7;
+            --primary: #1f4b7f;
+            --primary-deep: #16395f;
+            --success: #235b46;
+            --shadow: 0 18px 34px rgba(15, 34, 60, 0.07);
+            --bg-grad-1: #dbe4ef;
+            --bg-grad-2: #e7edf4;
+            --bg-grad-3: #edf1f5;
+            --bg-top: #f7f9fc;
+            --hero-grad-start: #ffffff;
+            --hero-grad-end: #f6f9fc;
+            --topbar-bg: rgba(255, 255, 255, 0.84);
+            --focus-bg: #ffffff;
+            --share-link-bg: #f3f7fb;
         }
 
         * {
@@ -31,117 +67,280 @@
         }
 
         body {
-            font-family: "Space Grotesk", sans-serif;
-            color: var(--ink);
+            font-family: "Plus Jakarta Sans", sans-serif;
+            color: var(--text);
             background:
-                radial-gradient(circle at 10% 10%, #dff5ec 0%, transparent 28%),
-                radial-gradient(circle at 88% 20%, #dce9ff 0%, transparent 24%),
-                linear-gradient(180deg, #f7f2ea 0%, var(--bg) 70%);
+                radial-gradient(circle at 8% -2%, var(--bg-grad-1) 0%, transparent 35%),
+                radial-gradient(circle at 96% 8%, var(--bg-grad-2) 0%, transparent 30%),
+                linear-gradient(180deg, var(--bg-top) 0%, var(--bg-grad-3) 70%);
             min-height: 100vh;
             line-height: 1.55;
         }
 
-        .wrap {
-            max-width: 1000px;
+        .container {
+            max-width: 1080px;
             margin: 0 auto;
-            padding: 24px;
+            padding: 20px;
         }
 
-        .hero {
-            margin-top: 24px;
-            padding: 32px;
-            border: 1px solid var(--line);
-            border-radius: 24px;
-            background: var(--paper);
-            box-shadow: var(--shadow);
-            animation: lift 650ms ease-out;
-        }
-
-        .tag {
-            font-family: "IBM Plex Mono", monospace;
-            color: var(--accent);
-            letter-spacing: 0.06em;
-            text-transform: uppercase;
-            font-size: 0.8rem;
-            margin: 0 0 12px;
-        }
-
-        h1 {
-            margin: 0;
-            font-size: clamp(2rem, 4vw, 3.4rem);
-            line-height: 1.05;
-        }
-
-        .sub {
-            margin: 16px 0 0;
-            max-width: 70ch;
-            color: var(--muted);
-        }
-
-        .actions {
-            margin-top: 22px;
+        .topbar {
             display: flex;
+            justify-content: space-between;
+            align-items: center;
             gap: 12px;
+            margin-top: 10px;
+            padding: 10px 12px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            background: var(--topbar-bg);
+            backdrop-filter: blur(8px);
+        }
+
+        .brand {
+            font-weight: 800;
+            letter-spacing: 0.01em;
+            font-size: 0.98rem;
+        }
+
+        .brand span {
+            color: var(--primary);
+        }
+
+        .top-actions {
+            display: flex;
+            gap: 10px;
             flex-wrap: wrap;
         }
 
-        .btn {
-            display: inline-block;
-            text-decoration: none;
+        .hero {
+            margin-top: 18px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            background: linear-gradient(160deg, var(--hero-grad-start) 0%, var(--hero-grad-end) 100%);
+            box-shadow: var(--shadow);
+            padding: 34px;
+            animation: enter 700ms ease-out both;
+        }
+
+        .intro-title {
+            margin: 0;
+            font-size: clamp(2rem, 4.1vw, 3rem);
+            line-height: 1.08;
+            letter-spacing: -0.03em;
+        }
+
+        .eyebrow {
+            margin: 0;
+            color: var(--success);
+            font-family: "JetBrains Mono", monospace;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-size: 0.76rem;
+        }
+
+        h1 {
+            margin: 8px 0 12px;
+            font-size: clamp(2rem, 4.2vw, 3.3rem);
+            line-height: 1.05;
+            letter-spacing: -0.03em;
+        }
+
+        .lead {
+            margin: 0;
+            color: var(--muted);
+            max-width: 62ch;
+        }
+
+        .cta-row {
+            margin-top: 22px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .about {
+            margin-top: 22px;
+            border: 1px solid var(--border);
+            background: var(--surface-soft);
+            border-radius: var(--radius-md);
+            padding: 20px;
+        }
+
+        .focus-grid {
+            margin-top: 16px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: 12px;
+        }
+
+        .focus-item {
+            border: 1px solid var(--border);
             border-radius: 12px;
-            padding: 10px 14px;
-            font-weight: 600;
-            border: 1px solid var(--line);
-            transition: transform 180ms ease, box-shadow 180ms ease;
+            padding: 14px;
+            background: var(--focus-bg);
+        }
+
+        .focus-item h3 {
+            margin: 0;
+            font-size: 1rem;
+        }
+
+        .focus-item p {
+            margin: 8px 0 0;
+            color: var(--muted);
+            font-size: 0.92rem;
+        }
+
+        .about h2 {
+            margin: 0 0 10px;
+            font-size: clamp(1.2rem, 2vw, 1.5rem);
+            letter-spacing: -0.01em;
+        }
+
+        .about p {
+            margin: 0;
+            color: var(--muted);
+            max-width: 74ch;
+        }
+
+        .btn {
+            text-decoration: none;
+            border-radius: 999px;
+            padding: 11px 16px;
+            font-weight: 700;
+            border: 1px solid var(--border);
+            transition: transform 160ms ease, box-shadow 160ms ease, background-color 160ms ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
         }
 
         .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(33, 22, 12, 0.1);
+            transform: translateY(-1px);
+            box-shadow: 0 12px 22px rgba(16, 46, 89, 0.12);
         }
 
         .btn.primary {
-            background: var(--accent);
-            border-color: var(--accent);
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-deep) 100%);
+            border-color: var(--primary);
             color: #ffffff;
         }
 
-        .btn.secondary {
-            color: var(--ink);
-            background: #ffffff;
+        .btn.ghost {
+            background: var(--surface);
+            color: var(--text);
         }
 
-        section {
-            margin-top: 28px;
-            padding: 26px;
-            border: 1px solid var(--line);
-            border-radius: 20px;
-            background: var(--paper);
+        .theme-toggle {
+            min-width: 150px;
+            justify-content: center;
+        }
+
+        .theme-icon {
+            width: 16px;
+            height: 16px;
+            position: relative;
+            display: inline-flex;
+            flex: 0 0 16px;
+        }
+
+        .theme-icon::before,
+        .theme-icon::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            transition: opacity 160ms ease;
+        }
+
+        .theme-icon::before {
+            border-radius: 50%;
+            border: 2px solid currentColor;
+            box-shadow: 0 0 0 2px transparent;
+            transform: scale(0.85);
+        }
+
+        .theme-icon::after {
+            border-radius: 50%;
+            background: currentColor;
+            transform: translateX(4px) scale(0.65);
+            opacity: 0;
+        }
+
+        #theme-toggle[data-next-theme="light"] .theme-icon::before {
+            opacity: 1;
+        }
+
+        #theme-toggle[data-next-theme="light"] .theme-icon::after {
+            opacity: 0;
+        }
+
+        #theme-toggle[data-next-theme="dark"] .theme-icon::before {
+            opacity: 1;
+        }
+
+        #theme-toggle[data-next-theme="dark"] .theme-icon::after {
+            opacity: 1;
+        }
+
+        .section {
+            margin-top: 26px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            background: var(--surface);
             box-shadow: var(--shadow);
-            animation: lift 760ms ease-out;
+            padding: 30px;
+            animation: enter 820ms ease-out both;
         }
 
-        h2 {
-            margin: 0 0 14px;
-            font-size: clamp(1.3rem, 2.6vw, 1.8rem);
+        .section h2 {
+            margin: 0;
+            font-size: clamp(1.4rem, 2.2vw, 1.9rem);
+            letter-spacing: -0.02em;
+        }
+
+        .section-sub {
+            margin: 8px 0 0;
+            color: var(--muted);
         }
 
         .resume-grid {
+            margin-top: 18px;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
             gap: 14px;
         }
 
         .card {
-            border: 1px solid var(--line);
-            border-radius: 14px;
-            padding: 16px;
-            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 18px;
+            background: linear-gradient(160deg, var(--surface) 0%, var(--surface-soft) 100%);
+            transition: transform 180ms ease, border-color 180ms ease;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            border-color: var(--primary);
+        }
+
+        .badge {
+            display: inline-block;
+            margin-bottom: 10px;
+            padding: 4px 10px;
+            border-radius: 999px;
+            border: 1px solid var(--border);
+            color: var(--primary);
+            font-size: 0.74rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            font-family: "JetBrains Mono", monospace;
         }
 
         .card h3 {
             margin: 0;
-            font-size: 1.08rem;
+            font-size: 1.1rem;
         }
 
         .card p {
@@ -150,30 +349,72 @@
             font-size: 0.95rem;
         }
 
-        .row {
+        .card .actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .note {
+            margin-top: 16px;
+            color: var(--muted);
+            font-size: 0.88rem;
+            font-family: "JetBrains Mono", monospace;
+        }
+
+        .share-list {
+            margin-top: 14px;
+            display: grid;
+            gap: 10px;
+        }
+
+        .share-item {
+            display: grid;
+            grid-template-columns: 140px minmax(0, 1fr) auto;
+            gap: 10px;
+            align-items: center;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 10px;
+            background: var(--surface);
+        }
+
+        .share-name {
+            font-weight: 700;
+            color: var(--text);
+        }
+
+        .share-link {
+            background: var(--share-link-bg);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 8px 10px;
+            color: var(--muted);
+            font-family: "JetBrains Mono", monospace;
+            font-size: 0.8rem;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .contact-row {
+            margin-top: 14px;
             display: flex;
             flex-wrap: wrap;
             gap: 10px;
         }
 
-        .tiny {
-            font-family: "IBM Plex Mono", monospace;
-            font-size: 0.8rem;
-            color: var(--muted);
-            margin-top: 16px;
-        }
-
         footer {
-            margin: 20px 0 8px;
+            margin: 16px 0 8px;
             text-align: center;
             color: var(--muted);
             font-size: 0.9rem;
         }
 
-        @keyframes lift {
+        @keyframes enter {
             from {
                 opacity: 0;
-                transform: translateY(12px);
+                transform: translateY(14px);
             }
             to {
                 opacity: 1;
@@ -181,73 +422,214 @@
             }
         }
 
-        @media (max-width: 640px) {
-            .wrap {
-                padding: 16px;
+        @media (max-width: 680px) {
+            .container {
+                padding: 14px;
             }
 
             .hero,
-            section {
-                padding: 20px;
+            .section {
+                padding: 22px;
+            }
+
+            .share-item {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
-    <main class="wrap">
-        <header class="hero">
-            <p class="tag">Mrinank Portfolio</p>
-            <h1>Resumes for Different Roles, in One Place</h1>
-            <p class="sub">
-                This portfolio page contains role-specific resume versions so recruiters and teams can quickly access
-                the profile most relevant to software, electronics, or embedded opportunities.
-            </p>
-            <div class="actions">
-                <a class="btn primary" href="#resumes">View Resumes</a>
-                <a class="btn secondary" href="CS.pdf" target="_blank" rel="noopener">Open CS Resume</a>
+    <div class="container">
+        <header class="topbar">
+            <div class="brand">Mrinank <span>Portfolio</span></div>
+            <div class="top-actions">
+                <a class="btn ghost" href="#about">About</a>
+                <a class="btn ghost" href="#resumes">Resumes</a>
+                <button class="btn ghost theme-toggle" id="theme-toggle" type="button" data-next-theme="light" aria-label="Switch color theme">
+                    <span class="theme-icon" aria-hidden="true"></span>
+                    <span id="theme-toggle-label">Switch to Light</span>
+                </button>
+                <a class="btn primary" href="#contact">Contact</a>
             </div>
         </header>
 
-        <section id="resumes">
+        <main class="hero">
+            <section>
+                <p class="eyebrow">Personal Portfolio</p>
+                <h1 class="intro-title">Engineering Portfolio for Software, Electronics, and Embedded Systems</h1>
+                <p class="lead">
+                    I build practical solutions across application development, hardware-aware systems, and
+                    low-level embedded integration. This website provides a concise profile overview and direct
+                    access to role-specific resumes for streamlined sharing.
+                </p>
+            </section>
+        </main>
+
+        <section class="about" id="about">
+            <h2>About Me</h2>
+            <p>
+                I am an engineering-focused candidate with a multi-domain profile across Computer Science,
+                Electronics, and Embedded Systems. My resume set reflects this breadth: software-oriented work for
+                application and systems development, electronics-focused experience for hardware and circuit contexts,
+                and embedded-focused work for firmware and low-level integration.
+            </p>
+            <div class="focus-grid">
+                <article class="focus-item">
+                    <h3>Software Engineering</h3>
+                    <p>Backend systems, full-stack development, and scalable application design.</p>
+                </article>
+                <article class="focus-item">
+                    <h3>Electronics Engineering</h3>
+                    <p>Circuit-level thinking, hardware context, and system-level troubleshooting.</p>
+                </article>
+                <article class="focus-item">
+                    <h3>Embedded Systems</h3>
+                    <p>Firmware-oriented development, hardware integration, and efficient runtime behavior.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="section" id="resumes">
             <h2>Resume Collection</h2>
+            <p class="section-sub">Choose the version aligned to the role and open or download instantly.</p>
+
             <div class="resume-grid">
                 <article class="card">
+                    <span class="badge">Software</span>
                     <h3>Computer Science Resume</h3>
-                    <p>For software development, backend, full-stack, and general CS positions.</p>
-                    <div class="row">
-                        <a class="btn secondary" href="CS.pdf" target="_blank" rel="noopener">View</a>
-                        <a class="btn secondary" href="CS.pdf" download>Download</a>
+                    <p>For software engineering, backend, full-stack, and general CS-focused opportunities.</p>
+                    <div class="actions">
+                        <a class="btn ghost" href="CS.pdf" target="_blank" rel="noopener">View</a>
+                        <a class="btn ghost" href="CS.pdf" download>Download</a>
                     </div>
                 </article>
 
                 <article class="card">
+                    <span class="badge">Hardware</span>
                     <h3>Electronics Resume</h3>
-                    <p>For electronics, hardware, and circuit-focused engineering opportunities.</p>
-                    <div class="row">
-                        <a class="btn secondary" href="ELECTRONICS.pdf" target="_blank" rel="noopener">View</a>
-                        <a class="btn secondary" href="ELECTRONICS.pdf" download>Download</a>
+                    <p>For electronics and hardware positions focused on circuits, systems, and device-level work.</p>
+                    <div class="actions">
+                        <a class="btn ghost" href="ELECTRONICS.pdf" target="_blank" rel="noopener">View</a>
+                        <a class="btn ghost" href="ELECTRONICS.pdf" download>Download</a>
                     </div>
                 </article>
 
                 <article class="card">
+                    <span class="badge">Firmware</span>
                     <h3>Embedded Resume</h3>
-                    <p>For embedded systems, firmware, and low-level software roles.</p>
-                    <div class="row">
-                        <a class="btn secondary" href="EMBEDDED.pdf" target="_blank" rel="noopener">View</a>
-                        <a class="btn secondary" href="EMBEDDED.pdf" download>Download</a>
+                    <p>For embedded systems and firmware roles involving low-level programming and integration.</p>
+                    <div class="actions">
+                        <a class="btn ghost" href="EMBEDDED.pdf" target="_blank" rel="noopener">View</a>
+                        <a class="btn ghost" href="EMBEDDED.pdf" download>Download</a>
                     </div>
                 </article>
             </div>
-            <p class="tiny">Tip: You can add more PDF files and duplicate a card block above to expand this list.</p>
+
+            <p class="note">Add new resume PDFs to the repo and duplicate a card to expand this section.</p>
+        </section>
+
+        <section class="section" id="share-links">
+            <h2>Share Resume Links</h2>
+            <p class="section-sub">Use these direct links when sharing your profile with recruiters and hiring teams.</p>
+            <div class="share-list">
+                <div class="share-item">
+                    <span class="share-name">CS Resume</span>
+                    <a class="share-link" href="CS.pdf" target="_blank" rel="noopener" id="share-cs">CS.pdf</a>
+                    <button class="btn ghost" data-copy-target="share-cs" type="button">Copy Link</button>
+                </div>
+                <div class="share-item">
+                    <span class="share-name">Electronics Resume</span>
+                    <a class="share-link" href="ELECTRONICS.pdf" target="_blank" rel="noopener" id="share-electronics">ELECTRONICS.pdf</a>
+                    <button class="btn ghost" data-copy-target="share-electronics" type="button">Copy Link</button>
+                </div>
+                <div class="share-item">
+                    <span class="share-name">Embedded Resume</span>
+                    <a class="share-link" href="EMBEDDED.pdf" target="_blank" rel="noopener" id="share-embedded">EMBEDDED.pdf</a>
+                    <button class="btn ghost" data-copy-target="share-embedded" type="button">Copy Link</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="contact">
+            <h2>Contact</h2>
+            <!-- <p class="section-sub">Add your preferred contact channels here before sharing publicly.</p> -->
+            <div class="contact-row">
+                <a class="btn ghost" href="mailto:mrinank2484@gmail.com ">Email</a>
+                <a class="btn ghost" href="https://www.linkedin.com/in/mrinank-gaur-252b53239/" target="_blank" rel="noopener">LinkedIn</a>
+                <a class="btn ghost" href="https://github.com/MrinankGaur" target="_blank" rel="noopener">GitHub</a>
+            </div>
         </section>
 
         <footer>
-            <span id="year"></span> Mrinank | Built for GitHub Pages
+            <span id="year"></span> Mrinank | Resume Portfolio
         </footer>
-    </main>
+    </div>
 
     <script>
         document.getElementById("year").textContent = new Date().getFullYear();
+
+        const themeToggle = document.getElementById("theme-toggle");
+        const themeToggleLabel = document.getElementById("theme-toggle-label");
+        const root = document.documentElement;
+
+        function setTheme(theme) {
+            root.setAttribute("data-theme", theme);
+            localStorage.setItem("theme", theme);
+            if (themeToggle) {
+                const nextTheme = theme === "dark" ? "light" : "dark";
+                themeToggle.setAttribute("data-next-theme", nextTheme);
+                if (themeToggleLabel) {
+                    themeToggleLabel.textContent = theme === "dark" ? "Switch to Light" : "Switch to Dark";
+                }
+            }
+        }
+
+        const storedTheme = localStorage.getItem("theme");
+        setTheme(storedTheme === "light" ? "light" : "dark");
+
+        if (themeToggle) {
+            themeToggle.addEventListener("click", () => {
+                const nextTheme = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+                setTheme(nextTheme);
+            });
+        }
+
+        function setAbsoluteLink(id, fileName) {
+            const link = document.getElementById(id);
+            if (!link) {
+                return;
+            }
+
+            const basePath = window.location.pathname.replace(/[^/]*$/, "");
+            const absoluteUrl = window.location.origin + basePath + fileName;
+            link.href = absoluteUrl;
+            link.textContent = absoluteUrl;
+        }
+
+        setAbsoluteLink("share-cs", "CS.pdf");
+        setAbsoluteLink("share-electronics", "ELECTRONICS.pdf");
+        setAbsoluteLink("share-embedded", "EMBEDDED.pdf");
+
+        document.querySelectorAll("[data-copy-target]").forEach((button) => {
+            button.addEventListener("click", async () => {
+                const targetId = button.getAttribute("data-copy-target");
+                const target = document.getElementById(targetId);
+                if (!target) {
+                    return;
+                }
+
+                try {
+                    await navigator.clipboard.writeText(target.href);
+                    const previousLabel = button.textContent;
+                    button.textContent = "Copied";
+                    setTimeout(() => {
+                        button.textContent = previousLabel;
+                    }, 1200);
+                } catch (error) {
+                    button.textContent = "Copy failed";
+                }
+            });
+        });
     </script>
 </body>
 </html>
