@@ -3,9 +3,251 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Resume</title>
+    <title>Mrinank Portfolio</title>
+    <meta name="description" content="Portfolio website with multiple resume versions for software, electronics, and embedded roles.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #f4efe7;
+            --paper: #fffdf9;
+            --ink: #1f1c1a;
+            --muted: #5f5854;
+            --accent: #007f5f;
+            --accent-2: #3a86ff;
+            --line: #d8cfc4;
+            --shadow: 0 12px 30px rgba(25, 17, 10, 0.11);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: "Space Grotesk", sans-serif;
+            color: var(--ink);
+            background:
+                radial-gradient(circle at 10% 10%, #dff5ec 0%, transparent 28%),
+                radial-gradient(circle at 88% 20%, #dce9ff 0%, transparent 24%),
+                linear-gradient(180deg, #f7f2ea 0%, var(--bg) 70%);
+            min-height: 100vh;
+            line-height: 1.55;
+        }
+
+        .wrap {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 24px;
+        }
+
+        .hero {
+            margin-top: 24px;
+            padding: 32px;
+            border: 1px solid var(--line);
+            border-radius: 24px;
+            background: var(--paper);
+            box-shadow: var(--shadow);
+            animation: lift 650ms ease-out;
+        }
+
+        .tag {
+            font-family: "IBM Plex Mono", monospace;
+            color: var(--accent);
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            margin: 0 0 12px;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: clamp(2rem, 4vw, 3.4rem);
+            line-height: 1.05;
+        }
+
+        .sub {
+            margin: 16px 0 0;
+            max-width: 70ch;
+            color: var(--muted);
+        }
+
+        .actions {
+            margin-top: 22px;
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            text-decoration: none;
+            border-radius: 12px;
+            padding: 10px 14px;
+            font-weight: 600;
+            border: 1px solid var(--line);
+            transition: transform 180ms ease, box-shadow 180ms ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(33, 22, 12, 0.1);
+        }
+
+        .btn.primary {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: #ffffff;
+        }
+
+        .btn.secondary {
+            color: var(--ink);
+            background: #ffffff;
+        }
+
+        section {
+            margin-top: 28px;
+            padding: 26px;
+            border: 1px solid var(--line);
+            border-radius: 20px;
+            background: var(--paper);
+            box-shadow: var(--shadow);
+            animation: lift 760ms ease-out;
+        }
+
+        h2 {
+            margin: 0 0 14px;
+            font-size: clamp(1.3rem, 2.6vw, 1.8rem);
+        }
+
+        .resume-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 14px;
+        }
+
+        .card {
+            border: 1px solid var(--line);
+            border-radius: 14px;
+            padding: 16px;
+            background: #fff;
+        }
+
+        .card h3 {
+            margin: 0;
+            font-size: 1.08rem;
+        }
+
+        .card p {
+            margin: 8px 0 14px;
+            color: var(--muted);
+            font-size: 0.95rem;
+        }
+
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .tiny {
+            font-family: "IBM Plex Mono", monospace;
+            font-size: 0.8rem;
+            color: var(--muted);
+            margin-top: 16px;
+        }
+
+        footer {
+            margin: 20px 0 8px;
+            text-align: center;
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        @keyframes lift {
+            from {
+                opacity: 0;
+                transform: translateY(12px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 640px) {
+            .wrap {
+                padding: 16px;
+            }
+
+            .hero,
+            section {
+                padding: 20px;
+            }
+        }
+    </style>
 </head>
-<body style="margin: 0;">
-    <embed src="resume CS.pdf" type="application/pdf" width="100%" height="100%" style="min-height: 100vh;">
+<body>
+    <main class="wrap">
+        <header class="hero">
+            <p class="tag">Mrinank Portfolio</p>
+            <h1>Resumes for Different Roles, in One Place</h1>
+            <p class="sub">
+                This portfolio page contains role-specific resume versions so recruiters and teams can quickly access
+                the profile most relevant to software, electronics, or embedded opportunities.
+            </p>
+            <div class="actions">
+                <a class="btn primary" href="#resumes">View Resumes</a>
+                <a class="btn secondary" href="CS.pdf" target="_blank" rel="noopener">Open CS Resume</a>
+            </div>
+        </header>
+
+        <section id="resumes">
+            <h2>Resume Collection</h2>
+            <div class="resume-grid">
+                <article class="card">
+                    <h3>Computer Science Resume</h3>
+                    <p>For software development, backend, full-stack, and general CS positions.</p>
+                    <div class="row">
+                        <a class="btn secondary" href="CS.pdf" target="_blank" rel="noopener">View</a>
+                        <a class="btn secondary" href="CS.pdf" download>Download</a>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <h3>Electronics Resume</h3>
+                    <p>For electronics, hardware, and circuit-focused engineering opportunities.</p>
+                    <div class="row">
+                        <a class="btn secondary" href="ELECTRONICS.pdf" target="_blank" rel="noopener">View</a>
+                        <a class="btn secondary" href="ELECTRONICS.pdf" download>Download</a>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <h3>Embedded Resume</h3>
+                    <p>For embedded systems, firmware, and low-level software roles.</p>
+                    <div class="row">
+                        <a class="btn secondary" href="EMBEDDED.pdf" target="_blank" rel="noopener">View</a>
+                        <a class="btn secondary" href="EMBEDDED.pdf" download>Download</a>
+                    </div>
+                </article>
+            </div>
+            <p class="tiny">Tip: You can add more PDF files and duplicate a card block above to expand this list.</p>
+        </section>
+
+        <footer>
+            <span id="year"></span> Mrinank | Built for GitHub Pages
+        </footer>
+    </main>
+
+    <script>
+        document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
 </body>
 </html>
