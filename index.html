@@ -1,635 +1,1139 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en" data-theme="dark">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mrinank | Resume Portfolio</title>
-    <meta name="description" content="Professional portfolio page with role-specific resumes for software, electronics, and embedded opportunities.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg: #0f1724;
-            --surface: #172334;
-            --surface-soft: #121d2d;
-            --text: #e8eef7;
-            --muted: #a7b7cb;
-            --border: #2a3b53;
-            --primary: #6ea8ff;
-            --primary-deep: #3c7be0;
-            --success: #65c4a1;
-            --shadow: 0 20px 34px rgba(2, 7, 15, 0.45);
-            --bg-grad-1: #1d2e45;
-            --bg-grad-2: #22324a;
-            --bg-grad-3: #0f1724;
-            --bg-top: #111c2b;
-            --hero-grad-start: #1b2a3d;
-            --hero-grad-end: #162334;
-            --topbar-bg: rgba(18, 28, 42, 0.86);
-            --focus-bg: #1a2739;
-            --share-link-bg: #101b2a;
-            --radius-lg: 24px;
-            --radius-md: 16px;
-            --radius-sm: 12px;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mrinank Gaur | Full-Stack Software Engineer & Systems Builder</title>
+  <meta name="description" content="Portfolio of Mrinank Gaur, Full-Stack Software Engineer and Systems Builder specializing in scalable web apps, real-time distributed systems, and embedded IoT.">
+  <meta name="theme-color" content="#080b10">
 
-        html[data-theme="light"] {
-            --bg: #edf1f5;
-            --surface: #ffffff;
-            --surface-soft: #f4f7fb;
-            --text: #17263c;
-            --muted: #53657d;
-            --border: #d4dde7;
-            --primary: #1f4b7f;
-            --primary-deep: #16395f;
-            --success: #235b46;
-            --shadow: 0 18px 34px rgba(15, 34, 60, 0.07);
-            --bg-grad-1: #dbe4ef;
-            --bg-grad-2: #e7edf4;
-            --bg-grad-3: #edf1f5;
-            --bg-top: #f7f9fc;
-            --hero-grad-start: #ffffff;
-            --hero-grad-end: #f6f9fc;
-            --topbar-bg: rgba(255, 255, 255, 0.84);
-            --focus-bg: #ffffff;
-            --share-link-bg: #f3f7fb;
-        }
+  <!-- Open Graph / Meta -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Mrinank Gaur | Software Engineer & Systems Builder">
+  <meta property="og:description" content="Building resilient web architectures, real-time distributed pipelines, and hardware-aware systems.">
+  <meta property="og:site_name" content="Mrinank Gaur Portfolio">
 
-        * {
-            box-sizing: border-box;
-        }
+  <!-- Google Fonts: Space Grotesk (Headings), Plus Jakarta Sans (Body), JetBrains Mono (Code/Metrics) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet">
 
-        html,
-        body {
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: "Plus Jakarta Sans", sans-serif;
-            color: var(--text);
-            background:
-                radial-gradient(circle at 8% -2%, var(--bg-grad-1) 0%, transparent 35%),
-                radial-gradient(circle at 96% 8%, var(--bg-grad-2) 0%, transparent 30%),
-                linear-gradient(180deg, var(--bg-top) 0%, var(--bg-grad-3) 70%);
-            min-height: 100vh;
-            line-height: 1.55;
-        }
-
-        .container {
-            max-width: 1080px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        .topbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 12px;
-            margin-top: 10px;
-            padding: 10px 12px;
-            border: 1px solid var(--border);
-            border-radius: var(--radius-sm);
-            background: var(--topbar-bg);
-            backdrop-filter: blur(8px);
-        }
-
-        .brand {
-            font-weight: 800;
-            letter-spacing: 0.01em;
-            font-size: 0.98rem;
-        }
-
-        .brand span {
-            color: var(--primary);
-        }
-
-        .top-actions {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-
-        .hero {
-            margin-top: 18px;
-            border: 1px solid var(--border);
-            border-radius: var(--radius-lg);
-            background: linear-gradient(160deg, var(--hero-grad-start) 0%, var(--hero-grad-end) 100%);
-            box-shadow: var(--shadow);
-            padding: 34px;
-            animation: enter 700ms ease-out both;
-        }
-
-        .intro-title {
-            margin: 0;
-            font-size: clamp(2rem, 4.1vw, 3rem);
-            line-height: 1.08;
-            letter-spacing: -0.03em;
-        }
-
-        .eyebrow {
-            margin: 0;
-            color: var(--success);
-            font-family: "JetBrains Mono", monospace;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            font-size: 0.76rem;
-        }
-
-        h1 {
-            margin: 8px 0 12px;
-            font-size: clamp(2rem, 4.2vw, 3.3rem);
-            line-height: 1.05;
-            letter-spacing: -0.03em;
-        }
-
-        .lead {
-            margin: 0;
-            color: var(--muted);
-            max-width: 62ch;
-        }
-
-        .cta-row {
-            margin-top: 22px;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-        }
-
-        .about {
-            margin-top: 22px;
-            border: 1px solid var(--border);
-            background: var(--surface-soft);
-            border-radius: var(--radius-md);
-            padding: 20px;
-        }
-
-        .focus-grid {
-            margin-top: 16px;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-            gap: 12px;
-        }
-
-        .focus-item {
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 14px;
-            background: var(--focus-bg);
-        }
-
-        .focus-item h3 {
-            margin: 0;
-            font-size: 1rem;
-        }
-
-        .focus-item p {
-            margin: 8px 0 0;
-            color: var(--muted);
-            font-size: 0.92rem;
-        }
-
-        .about h2 {
-            margin: 0 0 10px;
-            font-size: clamp(1.2rem, 2vw, 1.5rem);
-            letter-spacing: -0.01em;
-        }
-
-        .about p {
-            margin: 0;
-            color: var(--muted);
-            max-width: 74ch;
-        }
-
-        .btn {
-            text-decoration: none;
-            border-radius: 999px;
-            padding: 11px 16px;
-            font-weight: 700;
-            border: 1px solid var(--border);
-            transition: transform 160ms ease, box-shadow 160ms ease, background-color 160ms ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            cursor: pointer;
-        }
-
-        .btn:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 12px 22px rgba(16, 46, 89, 0.12);
-        }
-
-        .btn.primary {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-deep) 100%);
-            border-color: var(--primary);
-            color: #ffffff;
-        }
-
-        .btn.ghost {
-            background: var(--surface);
-            color: var(--text);
-        }
-
-        .theme-toggle {
-            min-width: 150px;
-            justify-content: center;
-        }
-
-        .theme-icon {
-            width: 16px;
-            height: 16px;
-            position: relative;
-            display: inline-flex;
-            flex: 0 0 16px;
-        }
-
-        .theme-icon::before,
-        .theme-icon::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            transition: opacity 160ms ease;
-        }
-
-        .theme-icon::before {
-            border-radius: 50%;
-            border: 2px solid currentColor;
-            box-shadow: 0 0 0 2px transparent;
-            transform: scale(0.85);
-        }
-
-        .theme-icon::after {
-            border-radius: 50%;
-            background: currentColor;
-            transform: translateX(4px) scale(0.65);
-            opacity: 0;
-        }
-
-        #theme-toggle[data-next-theme="light"] .theme-icon::before {
-            opacity: 1;
-        }
-
-        #theme-toggle[data-next-theme="light"] .theme-icon::after {
-            opacity: 0;
-        }
-
-        #theme-toggle[data-next-theme="dark"] .theme-icon::before {
-            opacity: 1;
-        }
-
-        #theme-toggle[data-next-theme="dark"] .theme-icon::after {
-            opacity: 1;
-        }
-
-        .section {
-            margin-top: 26px;
-            border: 1px solid var(--border);
-            border-radius: var(--radius-lg);
-            background: var(--surface);
-            box-shadow: var(--shadow);
-            padding: 30px;
-            animation: enter 820ms ease-out both;
-        }
-
-        .section h2 {
-            margin: 0;
-            font-size: clamp(1.4rem, 2.2vw, 1.9rem);
-            letter-spacing: -0.02em;
-        }
-
-        .section-sub {
-            margin: 8px 0 0;
-            color: var(--muted);
-        }
-
-        .resume-grid {
-            margin-top: 18px;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 14px;
-        }
-
-        .card {
-            border: 1px solid var(--border);
-            border-radius: var(--radius-md);
-            padding: 18px;
-            background: linear-gradient(160deg, var(--surface) 0%, var(--surface-soft) 100%);
-            transition: transform 180ms ease, border-color 180ms ease;
-        }
-
-        .card:hover {
-            transform: translateY(-2px);
-            border-color: var(--primary);
-        }
-
-        .badge {
-            display: inline-block;
-            margin-bottom: 10px;
-            padding: 4px 10px;
-            border-radius: 999px;
-            border: 1px solid var(--border);
-            color: var(--primary);
-            font-size: 0.74rem;
-            font-weight: 700;
-            letter-spacing: 0.04em;
-            text-transform: uppercase;
-            font-family: "JetBrains Mono", monospace;
-        }
-
-        .card h3 {
-            margin: 0;
-            font-size: 1.1rem;
-        }
-
-        .card p {
-            margin: 8px 0 14px;
-            color: var(--muted);
-            font-size: 0.95rem;
-        }
-
-        .card .actions {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-
-        .note {
-            margin-top: 16px;
-            color: var(--muted);
-            font-size: 0.88rem;
-            font-family: "JetBrains Mono", monospace;
-        }
-
-        .share-list {
-            margin-top: 14px;
-            display: grid;
-            gap: 10px;
-        }
-
-        .share-item {
-            display: grid;
-            grid-template-columns: 140px minmax(0, 1fr) auto;
-            gap: 10px;
-            align-items: center;
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 10px;
-            background: var(--surface);
-        }
-
-        .share-name {
-            font-weight: 700;
-            color: var(--text);
-        }
-
-        .share-link {
-            background: var(--share-link-bg);
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            padding: 8px 10px;
-            color: var(--muted);
-            font-family: "JetBrains Mono", monospace;
-            font-size: 0.8rem;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-        }
-
-        .contact-row {
-            margin-top: 14px;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        footer {
-            margin: 16px 0 8px;
-            text-align: center;
-            color: var(--muted);
-            font-size: 0.9rem;
-        }
-
-        @keyframes enter {
-            from {
-                opacity: 0;
-                transform: translateY(14px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @media (max-width: 680px) {
-            .container {
-                padding: 14px;
-            }
-
-            .hero,
-            .section {
-                padding: 22px;
-            }
-
-            .share-item {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <header class="topbar">
-            <div class="brand">Mrinank <span>Portfolio</span></div>
-            <div class="top-actions">
-                <a class="btn ghost" href="#about">About</a>
-                <a class="btn ghost" href="#resumes">Resumes</a>
-                <button class="btn ghost theme-toggle" id="theme-toggle" type="button" data-next-theme="light" aria-label="Switch color theme">
-                    <span class="theme-icon" aria-hidden="true"></span>
-                    <span id="theme-toggle-label">Switch to Light</span>
-                </button>
-                <a class="btn primary" href="#contact">Contact</a>
-            </div>
-        </header>
 
-        <main class="hero">
-            <section>
-                <p class="eyebrow">Personal Portfolio</p>
-                <h1 class="intro-title">Engineering Portfolio for Software, Electronics, and Embedded Systems</h1>
-                <p class="lead">
-                    I build practical solutions across application development, hardware-aware systems, and
-                    low-level embedded integration. This website provides a concise profile overview and direct
-                    access to role-specific resumes for streamlined sharing.
-                </p>
-            </section>
-        </main>
+  <!-- =========================================================================
+       SITE NAVIGATION HEADER
+       ========================================================================= -->
+  <header class="site-header" id="header">
+    <div class="container nav-wrap">
+      <a href="#top" class="brand" aria-label="Mrinank Gaur homepage">
+        <span class="brand-badge">MG</span>
+        <span>Mrinank Gaur</span>
+      </a>
 
-        <section class="about" id="about">
-            <h2>About Me</h2>
-            <p>
-                I am an engineering-focused candidate with a multi-domain profile across Computer Science,
-                Electronics, and Embedded Systems. My resume set reflects this breadth: software-oriented work for
-                application and systems development, electronics-focused experience for hardware and circuit contexts,
-                and embedded-focused work for firmware and low-level integration.
-            </p>
-            <div class="focus-grid">
-                <article class="focus-item">
-                    <h3>Software Engineering</h3>
-                    <p>Backend systems, full-stack development, and scalable application design.</p>
-                </article>
-                <article class="focus-item">
-                    <h3>Electronics Engineering</h3>
-                    <p>Circuit-level thinking, hardware context, and system-level troubleshooting.</p>
-                </article>
-                <article class="focus-item">
-                    <h3>Embedded Systems</h3>
-                    <p>Firmware-oriented development, hardware integration, and efficient runtime behavior.</p>
-                </article>
-            </div>
-        </section>
+      <nav aria-label="Main Navigation">
+        <ul class="nav-links">
+          <li><a href="#work" class="nav-link">Selected Work</a></li>
+          <li><a href="#skills" class="nav-link">Engineering Stack</a></li>
+          <li><a href="#experience" class="nav-link">Experience</a></li>
+          <li><a href="#resumes" class="nav-link">Resumes</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
 
-        <section class="section" id="resumes">
-            <h2>Resume Collection</h2>
-            <p class="section-sub">Choose the version aligned to the role and open or download instantly.</p>
+      <div class="nav-actions">
+        <!-- Quick Command Palette Trigger -->
+        <button class="cmd-trigger" id="cmd-trigger-btn" type="button" aria-label="Open command palette">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          <span class="cmd-text">Quick Search</span>
+          <span class="cmd-key"><kbd>Ctrl</kbd>+<kbd>K</kbd></span>
+        </button>
 
-            <div class="resume-grid">
-                <article class="card">
-                    <span class="badge">Software</span>
-                    <h3>Computer Science Resume</h3>
-                    <p>For software engineering, backend, full-stack, and general CS-focused opportunities.</p>
-                    <div class="actions">
-                        <a class="btn ghost" href="CS.pdf" target="_blank" rel="noopener">View</a>
-                        <a class="btn ghost" href="CS.pdf" download>Download</a>
-                    </div>
-                </article>
+        <!-- Theme Switcher Button -->
+        <button class="theme-btn" id="theme-toggle" type="button" aria-label="Switch to light mode">
+          <svg class="theme-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+            <!-- Populated by JS -->
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+          </svg>
+        </button>
 
-                <article class="card">
-                    <span class="badge">Hardware</span>
-                    <h3>Electronics Resume</h3>
-                    <p>For electronics and hardware positions focused on circuits, systems, and device-level work.</p>
-                    <div class="actions">
-                        <a class="btn ghost" href="ELECTRONICS.pdf" target="_blank" rel="noopener">View</a>
-                        <a class="btn ghost" href="ELECTRONICS.pdf" download>Download</a>
-                    </div>
-                </article>
-
-                <article class="card">
-                    <span class="badge">Firmware</span>
-                    <h3>Embedded Resume</h3>
-                    <p>For embedded systems and firmware roles involving low-level programming and integration.</p>
-                    <div class="actions">
-                        <a class="btn ghost" href="EMBEDDED.pdf" target="_blank" rel="noopener">View</a>
-                        <a class="btn ghost" href="EMBEDDED.pdf" download>Download</a>
-                    </div>
-                </article>
-            </div>
-
-            <!-- <p class="note">Add new resume PDFs to the repo and duplicate a card to expand this section.</p> -->
-        </section>
-
-        <section class="section" id="share-links">
-            <h2>Share Resume Links</h2>
-            <!--<p class="section-sub">Use these direct links when sharing your profile with recruiters and hiring teams.</p>-->
-            <div class="share-list">
-                <div class="share-item">
-                    <span class="share-name">CS Resume</span>
-                    <a class="share-link" href="CS.pdf" target="_blank" rel="noopener" id="share-cs">CS.pdf</a>
-                    <button class="btn ghost" data-copy-target="share-cs" type="button">Copy Link</button>
-                </div>
-                <div class="share-item">
-                    <span class="share-name">Electronics Resume</span>
-                    <a class="share-link" href="ELECTRONICS.pdf" target="_blank" rel="noopener" id="share-electronics">ELECTRONICS.pdf</a>
-                    <button class="btn ghost" data-copy-target="share-electronics" type="button">Copy Link</button>
-                </div>
-                <div class="share-item">
-                    <span class="share-name">Embedded Resume</span>
-                    <a class="share-link" href="EMBEDDED.pdf" target="_blank" rel="noopener" id="share-embedded">EMBEDDED.pdf</a>
-                    <button class="btn ghost" data-copy-target="share-embedded" type="button">Copy Link</button>
-                </div>
-            </div>
-        </section>
-
-        <section class="section" id="contact">
-            <h2>Contact</h2>
-            <!-- <p class="section-sub">Add your preferred contact channels here before sharing publicly.</p> -->
-            <div class="contact-row">
-                <a class="btn ghost" href="mailto:mrinank2484@gmail.com ">Email</a>
-                <a class="btn ghost" href="https://www.linkedin.com/in/mrinank-gaur-252b53239/" target="_blank" rel="noopener">LinkedIn</a>
-                <a class="btn ghost" href="https://github.com/MrinankGaur" target="_blank" rel="noopener">GitHub</a>
-            </div>
-        </section>
-
-        <footer>
-            <span id="year"></span> Mrinank | Resume Portfolio
-        </footer>
+        <a href="#contact" class="btn btn-primary btn-sm">Get in Touch</a>
+      </div>
     </div>
+  </header>
 
-    <script>
-        document.getElementById("year").textContent = new Date().getFullYear();
+  <main id="top">
+    <!-- =======================================================================
+         HERO SECTION
+         ======================================================================= -->
+    <section class="hero-section" aria-labelledby="hero-title">
+      <div class="container">
+        <div class="hero-grid">
+          <div class="hero-left">
+            <!-- Availability Pill -->
+            <div class="status-pill">
+              <span class="status-dot"></span>
+              <span>Available for SWE Roles · Full-Time 2026</span>
+            </div>
 
-        const themeToggle = document.getElementById("theme-toggle");
-        const themeToggleLabel = document.getElementById("theme-toggle-label");
-        const root = document.documentElement;
+            <h1 class="hero-title" id="hero-title">
+              Full-Stack Software Engineer & <span class="gradient-text">Systems Builder.</span>
+            </h1>
 
-        function setTheme(theme) {
-            root.setAttribute("data-theme", theme);
-            localStorage.setItem("theme", theme);
-            if (themeToggle) {
-                const nextTheme = theme === "dark" ? "light" : "dark";
-                themeToggle.setAttribute("data-next-theme", nextTheme);
-                if (themeToggleLabel) {
-                    themeToggleLabel.textContent = theme === "dark" ? "Switch to Light" : "Switch to Dark";
-                }
-            }
-        }
+            <p class="hero-subtitle">
+              Hi, I'm <strong>Mrinank Gaur</strong>. I engineer scalable web platforms, real-time distributed telemetry, and hardware-aware intelligent systems. From multi-tenant Next.js/Node micro-services to low-latency ML pipelines on embedded edge devices.
+            </p>
 
-        const storedTheme = localStorage.getItem("theme");
-        setTheme(storedTheme === "light" ? "light" : "dark");
+            <div class="hero-actions">
+              <a href="#work" class="btn btn-primary">
+                <span>Explore Selected Work</span>
+                <svg class="btn-icon btn-icon-right" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg>
+              </a>
 
-        if (themeToggle) {
-            themeToggle.addEventListener("click", () => {
-                const nextTheme = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
-                setTheme(nextTheme);
-            });
-        }
+              <a href="#resumes" class="btn btn-secondary">
+                <svg class="btn-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                <span>Interactive Resumes</span>
+              </a>
 
-        function setAbsoluteLink(id, fileName) {
-            const link = document.getElementById(id);
-            if (!link) {
-                return;
-            }
+              <button class="btn btn-ghost copy-trigger" data-copy="mrinank2484@gmail.com" data-label="Email address copied to clipboard!" type="button">
+                <svg class="btn-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                <span>Copy Email</span>
+              </button>
+            </div>
+          </div>
 
-            const basePath = window.location.pathname.replace(/[^/]*$/, "");
-            const absoluteUrl = window.location.origin + basePath + fileName;
-            link.href = absoluteUrl;
-            link.textContent = absoluteUrl;
-        }
+          <!-- Hero Right: Engineering Snapshot Card -->
+          <div class="hero-right">
+            <div class="hero-card">
+              <div class="hero-card-header">
+                <span class="hero-card-title">
+                  <span class="mono">SYS_INFO</span> · ENGINEER_SPEC
+                </span>
+                <span class="hero-card-location">India · Open to Relocation</span>
+              </div>
 
-        setAbsoluteLink("share-cs", "CS.pdf");
-        setAbsoluteLink("share-electronics", "ELECTRONICS.pdf");
-        setAbsoluteLink("share-embedded", "EMBEDDED.pdf");
+              <div class="spec-list">
+                <div class="spec-item">
+                  <span class="spec-label">Core Specialization</span>
+                  <div class="spec-value">Distributed Systems · Full-Stack Web · Edge ML</div>
+                  <span class="spec-sub">Next.js / TypeScript / Node / Python / WebSockets</span>
+                </div>
 
-        document.querySelectorAll("[data-copy-target]").forEach((button) => {
-            button.addEventListener("click", async () => {
-                const targetId = button.getAttribute("data-copy-target");
-                const target = document.getElementById(targetId);
-                if (!target) {
-                    return;
-                }
+                <div class="spec-item">
+                  <span class="spec-label">Education</span>
+                  <div class="spec-value">Vellore Institute of Technology</div>
+                  <span class="spec-sub">B.Tech Electronics & Comm. (CGPA: <strong>8.97 / 10</strong>)</span>
+                </div>
 
-                try {
-                    await navigator.clipboard.writeText(target.href);
-                    const previousLabel = button.textContent;
-                    button.textContent = "Copied";
-                    setTimeout(() => {
-                        button.textContent = previousLabel;
-                    }, 1200);
-                } catch (error) {
-                    button.textContent = "Copy failed";
-                }
-            });
-        });
-    </script>
+                <div class="spec-item">
+                  <span class="spec-label">Problem Solving Record</span>
+                  <div class="spec-value">
+                    <span class="mono" style="color:var(--accent-emerald);">290+ Problems Solved</span>
+                    <span class="spec-sub">(100-Day Streak)</span>
+                  </div>
+                  <span class="spec-sub">Dynamic Programming · Graph Algorithms · Trees</span>
+                </div>
+
+                <div class="spec-item">
+                  <span class="spec-label">Hardware & Systems Edge</span>
+                  <div class="spec-value">Verilog RTL · Cadence EDA · ESP32 Telemetry</div>
+                  <span class="spec-sub">SoC APB-AHB Bridges & 8-Axis Autonomous Kinematics</span>
+                </div>
+              </div>
+
+              <div class="quick-socials">
+                <a href="https://github.com/MrinankGaur" target="_blank" rel="noopener" class="social-chip">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                  <span>GitHub</span>
+                </a>
+                <a href="https://www.linkedin.com/in/mrinank-gaur-252b53239/" target="_blank" rel="noopener" class="social-chip">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                  <span>LinkedIn</span>
+                </a>
+                <a href="https://leetcode.com/u/mrinankgaur/" target="_blank" rel="noopener" class="social-chip">
+                  <span style="color:#ffa116;font-weight:bold;">LC</span>
+                  <span>LeetCode</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Metric Counters Strip -->
+        <div class="metrics-strip">
+          <div class="metric-card">
+            <div class="metric-number">
+              <span>290</span><span class="accent">+</span>
+            </div>
+            <div class="metric-label">LeetCode Solved</div>
+            <div class="metric-desc">100-Day Active Solve Streak</div>
+          </div>
+
+          <div class="metric-card">
+            <div class="metric-number">
+              <span>8.97</span><span class="accent">/10</span>
+            </div>
+            <div class="metric-label">Academic CGPA</div>
+            <div class="metric-desc">Vellore Institute of Technology</div>
+          </div>
+
+          <div class="metric-card">
+            <div class="metric-number">
+              <span>&lt;100</span><span class="accent">ms</span>
+            </div>
+            <div class="metric-label">Real-Time Inference</div>
+            <div class="metric-desc">Sub-second WebSockets & ML</div>
+          </div>
+
+          <div class="metric-card">
+            <div class="metric-number">
+              <span>5</span><span class="accent">+</span>
+            </div>
+            <div class="metric-label">Shipped Production Systems</div>
+            <div class="metric-desc">Full-Stack SaaS & Embedded IoT</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="section-divider">
+
+    <!-- =======================================================================
+         SELECTED WORK & ENGINEERING PROJECTS
+         ======================================================================= -->
+    <section class="section" id="work" aria-labelledby="work-title">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="section-kicker">Engineered Solutions</span>
+            <h2 class="section-title" id="work-title">Selected Systems & Software</h2>
+          </div>
+          <p class="section-intro">
+            A portfolio of production-style web applications, low-latency telemetry pipelines, and applied machine learning models. Built to solve real problems with measured performance.
+          </p>
+        </div>
+
+        <!-- Filter Tabs -->
+        <div class="filter-tabs" role="tablist" aria-label="Project categories">
+          <button class="filter-tab active" data-filter="all" type="button">All Systems (6)</button>
+          <button class="filter-tab" data-filter="fullstack" type="button">Full-Stack & SaaS</button>
+          <button class="filter-tab" data-filter="ml-realtime" type="button">Real-Time & ML</button>
+          <button class="filter-tab" data-filter="embedded" type="button">Hardware & Embedded</button>
+        </div>
+
+        <div class="projects-grid">
+          <!-- Project 1: Shopalytics -->
+          <article class="project-card" data-category="fullstack">
+            <div class="project-topbar">
+              <span class="project-category">Full-Stack SaaS</span>
+              <span class="project-metrics-badge">Live Demo Active</span>
+            </div>
+            <h3 class="project-title">Shopalytics — B2B SaaS for Shopify Stores</h3>
+            <p class="project-desc">
+              Automated data ingestion and cohort revenue intelligence platform for e-commerce merchants integrating directly with Shopify APIs.
+            </p>
+            <ul class="project-highlights">
+              <li>Integrated Shopify APIs for automated store ingestion and bi-directional transaction synchronization.</li>
+              <li>Engineered a secure multi-tenant architecture with Prisma ORM + PostgreSQL with role-based auth.</li>
+              <li>Delivered interactive analytics dashboards for tracking customer LTV, churn, and order trends.</li>
+            </ul>
+            <div class="project-tags">
+              <span class="tech-tag">Next.js</span>
+              <span class="tech-tag">Node.js</span>
+              <span class="tech-tag">Prisma</span>
+              <span class="tech-tag">PostgreSQL</span>
+              <span class="tech-tag">Shopify API</span>
+            </div>
+            <div class="project-links">
+              <div class="project-action-group">
+                <a href="https://shopalytics.vercel.app/" target="_blank" rel="noopener" class="link-btn">
+                  <span>Live Demo</span>
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                </a>
+                <a href="https://github.com/MrinankGaur/Shopalytics" target="_blank" rel="noopener" class="link-btn link-btn-ghost">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                  <span>Code</span>
+                </a>
+              </div>
+              <button class="link-btn link-btn-ghost open-modal-btn" data-project="shopalytics" type="button">
+                <span>Architecture</span>
+                <span aria-hidden="true">&rarr;</span>
+              </button>
+            </div>
+          </article>
+
+          <!-- Project 2: Gait Analysis Mood Detection -->
+          <article class="project-card" data-category="ml-realtime">
+            <div class="project-topbar">
+              <span class="project-category">Real-Time ML & IoT</span>
+              <span class="project-metrics-badge">&gt;90% Classification Accuracy</span>
+            </div>
+            <h3 class="project-title">Real-Time Mood Detection via Gait Analysis</h3>
+            <p class="project-desc">
+              Biometric emotional inference pipeline combining edge force/IMU sensors with continuous Random Forest prediction streaming over low-latency WebSockets.
+            </p>
+            <ul class="project-highlights">
+              <li>Built asynchronous Python FastAPI server delivering low-latency biometric predictions over WebSockets.</li>
+              <li>Engineered feature-extraction pipeline with Scikit-Learn classifying affective states with &gt;90% accuracy.</li>
+              <li>Designed responsive Next.js frontend with live dynamic pressure heatmaps and orientation telemetry.</li>
+            </ul>
+            <div class="project-tags">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">FastAPI</span>
+              <span class="tech-tag">Scikit-Learn</span>
+              <span class="tech-tag">Next.js</span>
+              <span class="tech-tag">WebSockets</span>
+              <span class="tech-tag">ESP32</span>
+            </div>
+            <div class="project-links">
+              <div class="project-action-group">
+                <a href="https://github.com/MrinankGaur/Mood-Detection-Using-GAIT-Analysis" target="_blank" rel="noopener" class="link-btn">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                  <span>Repository</span>
+                </a>
+              </div>
+              <button class="link-btn link-btn-ghost open-modal-btn" data-project="gait" type="button">
+                <span>Architecture</span>
+                <span aria-hidden="true">&rarr;</span>
+              </button>
+            </div>
+          </article>
+
+          <!-- Project 3: Boardly -->
+          <article class="project-card" data-category="fullstack">
+            <div class="project-topbar">
+              <span class="project-category">Collaborative Systems</span>
+              <span class="project-metrics-badge">Live Multi-User CRDT</span>
+            </div>
+            <h3 class="project-title">Boardly — Real-Time Collaborative Canvas</h3>
+            <p class="project-desc">
+              Multi-user collaborative digital whiteboard engine with conflict-free state synchronization, live cursor tracking, and modular drawing tools.
+            </p>
+            <ul class="project-highlights">
+              <li>Engineered live room collaboration with multi-user cursor tracking using LiveBlocks WebSocket protocol.</li>
+              <li>Built comprehensive vector drawing toolkit with 5+ interactive tools (shapes, text, notes, freehand).</li>
+              <li>Integrated Clerk authentication and Convex reactive backend for zero-friction user onboarding.</li>
+            </ul>
+            <div class="project-tags">
+              <span class="tech-tag">Next.js</span>
+              <span class="tech-tag">TypeScript</span>
+              <span class="tech-tag">LiveBlocks</span>
+              <span class="tech-tag">Convex</span>
+              <span class="tech-tag">Clerk Auth</span>
+            </div>
+            <div class="project-links">
+              <div class="project-action-group">
+                <a href="https://boardly24.vercel.app/" target="_blank" rel="noopener" class="link-btn">
+                  <span>Live Demo</span>
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                </a>
+                <a href="https://github.com/MrinankGaur/Boardly" target="_blank" rel="noopener" class="link-btn link-btn-ghost">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                  <span>Code</span>
+                </a>
+              </div>
+              <button class="link-btn link-btn-ghost open-modal-btn" data-project="boardly" type="button">
+                <span>Architecture</span>
+                <span aria-hidden="true">&rarr;</span>
+              </button>
+            </div>
+          </article>
+
+          <!-- Project 4: Flex Sensor Smart Glove -->
+          <article class="project-card" data-category="embedded">
+            <div class="project-topbar">
+              <span class="project-category">Wearable & ML</span>
+              <span class="project-metrics-badge">&lt;100ms Inference Latency</span>
+            </div>
+            <h3 class="project-title">Flex-Sensor Glove for Sign-to-Speech Translation</h3>
+            <p class="project-desc">
+              Wireless gesture translation system decoding ASL signs into 5 spoken languages with sequential LSTM deep learning and multi-sensor calibration.
+            </p>
+            <ul class="project-highlights">
+              <li>Fabricated smart glove with 5 flex sensors + 6-axis IMU, streaming calibrated telemetry at 50–100 Hz.</li>
+              <li>Trained sequential LSTM gesture classifier achieving 80.4% test accuracy across 30+ distinct ASL signs.</li>
+              <li>Built real-time web application translating gestures into 5 spoken languages with instant audio playback.</li>
+            </ul>
+            <div class="project-tags">
+              <span class="tech-tag">ESP32</span>
+              <span class="tech-tag">LSTM / PyTorch</span>
+              <span class="tech-tag">MPU6050</span>
+              <span class="tech-tag">Next.js</span>
+              <span class="tech-tag">Speech Synth</span>
+            </div>
+            <div class="project-links">
+              <div class="project-action-group">
+                <a href="https://github.com/MrinankGaur/FLEX-SENSOR-BASED-GLOVE-FOR-SIGN-LANGUAGE-RECOGNITION-AND-MULTILINGUAL-SPEECH-TRANSLATION" target="_blank" rel="noopener" class="link-btn">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                  <span>Repository</span>
+                </a>
+              </div>
+              <button class="link-btn link-btn-ghost open-modal-btn" data-project="glove" type="button">
+                <span>Architecture</span>
+                <span aria-hidden="true">&rarr;</span>
+              </button>
+            </div>
+          </article>
+
+          <!-- Project 5: ANPR -->
+          <article class="project-card" data-category="ml-realtime">
+            <div class="project-topbar">
+              <span class="project-category">Computer Vision</span>
+              <span class="project-metrics-badge">95% Recognition Accuracy</span>
+            </div>
+            <h3 class="project-title">Automatic Number Plate Recognition (ANPR)</h3>
+            <p class="project-desc">
+              Low-latency edge surveillance system extracting vehicle license identifiers from live video feeds using OpenCV contour analysis and EasyOCR.
+            </p>
+            <ul class="project-highlights">
+              <li>Integrated ESP32-CAM video stream with asynchronous Python backend to reach 95% accuracy.</li>
+              <li>Engineered image morphology and adaptive thresholding pipeline, cutting recognition latency to &lt;2s.</li>
+              <li>Developed browser management interface for automated logging and OCR verification.</li>
+            </ul>
+            <div class="project-tags">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">OpenCV</span>
+              <span class="tech-tag">EasyOCR</span>
+              <span class="tech-tag">ESP32-CAM</span>
+            </div>
+            <div class="project-links">
+              <div class="project-action-group">
+                <a href="https://github.com/MrinankGaur/Automatic-Number-Plate-Recognition-System" target="_blank" rel="noopener" class="link-btn">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                  <span>Repository</span>
+                </a>
+              </div>
+              <button class="link-btn link-btn-ghost open-modal-btn" data-project="anpr" type="button">
+                <span>Architecture</span>
+                <span aria-hidden="true">&rarr;</span>
+              </button>
+            </div>
+          </article>
+
+          <!-- Project 6: MAC Unit -->
+          <article class="project-card" data-category="embedded">
+            <div class="project-topbar">
+              <span class="project-category">VLSI & Hardware</span>
+              <span class="project-metrics-badge">5 GHz Clock Frequency</span>
+            </div>
+            <h3 class="project-title">Pipelined MAC Unit for DNN Accelerators</h3>
+            <p class="project-desc">
+              High-throughput Multiply-Accumulate execution unit designed in Verilog RTL with hyper-pipelining for deep neural network hardware co-processors.
+            </p>
+            <ul class="project-highlights">
+              <li>Engineered custom 4-bit multipliers and 8-bit full-adder trees with balanced propagation delays.</li>
+              <li>Integrated deskewing registers achieving a 5 GHz clock frequency target on 0.18µm CMOS process.</li>
+              <li>Validated functional verification and waveform timing analysis using Cadence EDA simulation tools.</li>
+            </ul>
+            <div class="project-tags">
+              <span class="tech-tag">Verilog</span>
+              <span class="tech-tag">Cadence EDA</span>
+              <span class="tech-tag">CMOS VLSI</span>
+              <span class="tech-tag">DNN Hardware</span>
+            </div>
+            <div class="project-links">
+              <div class="project-action-group">
+                <a href="https://github.com/MrinankGaur" target="_blank" rel="noopener" class="link-btn link-btn-ghost">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                  <span>Profile</span>
+                </a>
+              </div>
+              <button class="link-btn link-btn-ghost open-modal-btn" data-project="mac" type="button">
+                <span>Architecture</span>
+                <span aria-hidden="true">&rarr;</span>
+              </button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <hr class="section-divider">
+
+    <!-- =======================================================================
+         ENGINEERING SKILLS & ARCHITECTURE MATRIX
+         ======================================================================= -->
+    <section class="section" id="skills" aria-labelledby="skills-title">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="section-kicker">Competencies</span>
+            <h2 class="section-title" id="skills-title">Technical Capabilities & Stack</h2>
+          </div>
+          <p class="section-intro">
+            A comprehensive overview of production-tested technologies, architectural paradigms, and computer science foundations.
+          </p>
+        </div>
+
+        <div class="skills-matrix">
+          <!-- Category 1: Backend & Distributed Systems -->
+          <div class="skill-category-card">
+            <div class="skill-cat-header">
+              <span class="skill-cat-num">01</span>
+              <h3 class="skill-cat-title">Backend & Distributed Systems</h3>
+            </div>
+            <div class="skill-items-grid">
+              <div class="skill-badge">
+                <span class="skill-name">Node.js / Express</span>
+                <span class="skill-desc">Asynchronous APIs</span>
+              </div>
+              <div class="skill-badge">
+                <span class="skill-name">FastAPI</span>
+                <span class="skill-desc">High-speed Python</span>
+              </div>
+              <div class="skill-badge">
+                <span class="skill-name">PostgreSQL & Prisma</span>
+                <span class="skill-desc">Relational & ORM</span>
+              </div>
+              <div class="skill-badge">
+                <span class="skill-name">WebSockets</span>
+                <span class="skill-desc">Real-time Telemetry</span>
+              </div>
+              <div class="skill-badge">
+                <span class="skill-name">MongoDB & Convex</span>
+                <span class="skill-desc">Reactive Datastores</span>
+              </div>
+              <div class="skill-badge">
+                <span class="skill-name">RESTful APIs</span>
+                <span class="skill-desc">API Architecture</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Category 2: Frontend & Interactive Systems -->
+          <div class="skill-category-card">
+            <div class="skill-cat-header">
+              <span class="skill-cat-num">02</span>
+              <h3 class="skill-cat-title">Frontend Engineering & UI</h3>
+            </div>
+            <div class="skill-items-grid">
+              <div class="skill-badge">
+                <span class="skill-name">Next.js & React</span>
+                <span class="skill-desc">SSR / SSG / App Router</span>
+              </div>
+              <div class="skill-badge">
+                <span class="skill-name">TypeScript</span>
+                <span class="skill-desc">Type-safe Architecture</span>
+              </div>
+              <div class="skill-badge">
+                <span class="skill-name">Vanilla CSS / Systems</span>
+                <span class="skill-desc">Design Tokens & Fluid UI</span>
+              </div>
+              <div class="skill-badge">
+                <span class="skill-name">LiveBlocks & CRDTs</span>
+                <span class="skill-desc">Multi-user Canvas</span>
+              </div>
+              <div class="skill-badge">
+                <span class="skill-name">Clerk & JWT Auth</span>
+                <span class="skill-desc">Identity & RBAC</span>
+              </div>
+              <div class="skill-badge">
+                <span class="skill-name">Performance Optimization</span>
+                <span class="skill-desc">Core Web Vitals</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Category 3: Embedded Systems & Hardware -->
+          <div class="skill-category-card">
+            <div class="skill-cat-header">
+              <span class="skill-cat-num">03</span>
+              <h3 class="skill-cat-title">Hardware, IoT & Low-Level</h3>
+            </div>
+            <div class="skill-items-grid">
+              <div class="skill-badge">
+                <span class="skill-name">Embedded C / C++</span>
+                <span class="skill-desc">Firmware & Control</span>
+              </div>
+              <div class="skill-badge">
+                <span class="skill-name">ESP32 & Arduino</span>
+                <span class="skill-desc">IoT & Sensor Stream</span>
+              </div>
+              <div class="skill-badge">
+                <span class="skill-name">Verilog RTL</span>
+                <span class="skill-desc">Digital SoC Design</span>
+              </div>
+              <div class="skill-badge">
+                <span class="skill-name">Cadence EDA Tools</span>
+                <span class="skill-desc">Simulation & Synthesis</span>
+              </div>
+              <div class="skill-badge">
+                <span class="skill-name">I2C / SPI / UART</span>
+                <span class="skill-desc">Bus Protocols</span>
+              </div>
+              <div class="skill-badge">
+                <span class="skill-name">Raspberry Pi & Linux</span>
+                <span class="skill-desc">Edge Compute & Bash</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Category 4: Core CS & Machine Learning -->
+          <div class="skill-category-card">
+            <div class="skill-cat-header">
+              <span class="skill-cat-num">04</span>
+              <h3 class="skill-cat-title">Core CS & Machine Learning</h3>
+            </div>
+            <div class="skill-items-grid">
+              <div class="skill-badge">
+                <span class="skill-name">Data Structures & Algo</span>
+                <span class="skill-desc">290+ Solved, 100d streak</span>
+              </div>
+              <div class="skill-badge">
+                <span class="skill-name">Scikit-Learn</span>
+                <span class="skill-desc">Random Forest / Classif.</span>
+              </div>
+              <div class="skill-badge">
+                <span class="skill-name">LSTM Networks</span>
+                <span class="skill-desc">Sequence Modeling</span>
+              </div>
+              <div class="skill-badge">
+                <span class="skill-name">OpenCV</span>
+                <span class="skill-desc">Computer Vision & OCR</span>
+              </div>
+              <div class="skill-badge">
+                <span class="skill-name">Pandas & NumPy</span>
+                <span class="skill-desc">Vectorized Analysis</span>
+              </div>
+              <div class="skill-badge">
+                <span class="skill-name">Git & CI/CD</span>
+                <span class="skill-desc">Version Control</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- LeetCode & Problem Solving Banner -->
+          <div class="leetcode-banner">
+            <div class="leetcode-content">
+              <h4>Proven Algorithmic Foundation</h4>
+              <p>Active competitive programming track record with rigorous problem solving across Dynamic Programming, Graphs, Union-Find, and Backtracking.</p>
+            </div>
+            <div class="leetcode-stats">
+              <div class="streak-tag">
+                <span aria-hidden="true">&#9889;</span>
+                <span>100-Day Streak</span>
+              </div>
+              <a href="https://leetcode.com/u/mrinankgaur/" target="_blank" rel="noopener" class="btn btn-secondary btn-sm">
+                <span>View LeetCode Profile</span>
+                <span aria-hidden="true">&nearr;</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="section-divider">
+
+    <!-- =======================================================================
+         EXPERIENCE & LEADERSHIP TIMELINE
+         ======================================================================= -->
+    <section class="section" id="experience" aria-labelledby="exp-title">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="section-kicker">Career Trajectory</span>
+            <h2 class="section-title" id="exp-title">Experience & Leadership</h2>
+          </div>
+          <p class="section-intro">
+            Demonstrated engineering experience across industry internships, competitive robotics teams, and academic coursework.
+          </p>
+        </div>
+
+        <div class="timeline">
+          <!-- Entry 1: Maven Silicon -->
+          <div class="timeline-entry">
+            <div class="timeline-dot"></div>
+            <div class="timeline-card">
+              <div class="timeline-meta">
+                <div>
+                  <h3 class="timeline-role">Digital Design Intern</h3>
+                  <span class="timeline-company">Maven Silicon · Chennai, India</span>
+                </div>
+                <span class="timeline-date">May 2024 – Jul 2024</span>
+              </div>
+              <p class="timeline-body">
+                Focused on System-on-Chip (SoC) peripheral interconnect architecture and hardware protocol verification.
+              </p>
+              <ul class="timeline-bullets">
+                <li>Designed and implemented an APB-to-AHB bridge in Verilog RTL for seamless SoC bus subsystem integration.</li>
+                <li>Verified functional protocol compliance across AHB-Lite and APB bus specifications under corner-case scenarios.</li>
+                <li>Executed synthesis, functional simulation, and constraint verification using Cadence EDA tool suites.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Entry 2: Technocrats Robotics -->
+          <div class="timeline-entry">
+            <div class="timeline-dot"></div>
+            <div class="timeline-card">
+              <div class="timeline-meta">
+                <div>
+                  <h3 class="timeline-role">Robotics Engineer</h3>
+                  <span class="timeline-company">Technocrats Robotics · VIT University</span>
+                </div>
+                <span class="timeline-date">Oct 2023 – May 2025</span>
+              </div>
+              <p class="timeline-body">
+                Core engineering team member developing competition-grade autonomous rover platforms.
+              </p>
+              <ul class="timeline-bullets">
+                <li>Designed and calibrated 8-axis movement kinematics and motor driver control loops for autonomous navigation.</li>
+                <li>Collaborated on modular embedded software architecture for high-rate sensor diagnostics and trajectory execution.</li>
+                <li>Engineered telemetry links connecting embedded controllers to remote operator mission control dashboards.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Entry 3: VIT University -->
+          <div class="timeline-entry">
+            <div class="timeline-dot"></div>
+            <div class="timeline-card">
+              <div class="timeline-meta">
+                <div>
+                  <h3 class="timeline-role">B.Tech in Electronics & Communication Engineering</h3>
+                  <span class="timeline-company">Vellore Institute of Technology · Vellore, India</span>
+                </div>
+                <span class="timeline-date">2022 – 2026</span>
+              </div>
+              <p class="timeline-body">
+                <strong>CGPA: 8.97 / 10</strong>. Rigorous training across Computer Architecture, Operating Systems, Data Structures & Algorithms, Digital Signal Processing, and Embedded Microcontrollers.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="section-divider">
+
+    <!-- =======================================================================
+         TAILORED RESUME HUB (Interactive 3-Role Switcher)
+         ======================================================================= -->
+    <section class="section" id="resumes" aria-labelledby="resume-hub-title">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="section-kicker">Documentation & Credentials</span>
+            <h2 class="section-title" id="resume-hub-title">Tailored Resume Collection</h2>
+          </div>
+          <p class="section-intro">
+            Three focused resume versions customized for distinct engineering specializations. Select the profile that best matches your team's opening.
+          </p>
+        </div>
+
+        <div class="resume-hub">
+          <!-- Role Selector Buttons -->
+          <div class="resume-switcher" role="tablist" aria-label="Resume categories">
+            <button class="resume-tab-btn active" data-role="cs" type="button" role="tab">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+              <span>Computer Science / SWE</span>
+            </button>
+            <button class="resume-tab-btn" data-role="embedded" type="button" role="tab">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect><rect x="9" y="9" width="6" height="6"></rect><line x1="9" y1="1" x2="9" y2="4"></line><line x1="15" y1="1" x2="15" y2="4"></line><line x1="9" y1="20" x2="9" y2="23"></line><line x1="15" y1="20" x2="15" y2="23"></line><line x1="20" y1="9" x2="23" y2="9"></line><line x1="20" y1="14" x2="23" y2="14"></line><line x1="1" y1="9" x2="4" y2="9"></line><line x1="1" y1="14" x2="4" y2="14"></line></svg>
+              <span>Embedded Systems</span>
+            </button>
+            <button class="resume-tab-btn" data-role="electronics" type="button" role="tab">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="6" x2="12" y2="12"></line><line x1="12" y1="12" x2="16" y2="16"></line></svg>
+              <span>Electronics & VLSI</span>
+            </button>
+          </div>
+
+          <!-- Panel 1: Computer Science / SWE -->
+          <div class="resume-content-panel active" data-panel="cs" role="tabpanel">
+            <div class="resume-info">
+              <h3>Computer Science & Full-Stack SWE</h3>
+              <p>
+                Tailored for Backend, Full-Stack, and Distributed Systems roles. Highlights end-to-end production web applications, database schema modeling, WebSocket architectures, and algorithmic problem-solving.
+              </p>
+              <ul class="resume-key-points">
+                <li><span class="check">&#10003;</span> Next.js, Node.js, FastAPI, Prisma ORM & PostgreSQL</li>
+                <li><span class="check">&#10003;</span> Real-time WebSocket streaming & CRDT collaborative states</li>
+                <li><span class="check">&#10003;</span> 290+ DSA problems solved on LeetCode (100-day streak)</li>
+                <li><span class="check">&#10003;</span> Production deployments on Vercel, AWS & cloud infrastructure</li>
+              </ul>
+              <div class="resume-actions">
+                <a href="CS.pdf" target="_blank" rel="noopener" class="btn btn-primary">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                  <span>Open CS Resume (PDF)</span>
+                </a>
+                <a href="CS.pdf" download="Mrinank_Gaur_CS_Resume.pdf" class="btn btn-secondary">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                  <span>Download File</span>
+                </a>
+              </div>
+            </div>
+            <div class="resume-preview-col">
+              <div class="resume-card-preview">
+                <div class="preview-header">
+                  <span>MRINANK_GAUR_SWE_RESUME.PDF</span>
+                  <span class="mono">1-PAGE</span>
+                </div>
+                <div class="preview-line w-80"></div>
+                <div class="preview-line w-60"></div>
+                <div class="preview-line w-90"></div>
+                <div class="preview-line w-45"></div>
+                <div class="preview-line w-70"></div>
+                <div class="preview-chip-row">
+                  <span class="preview-chip">TypeScript</span>
+                  <span class="preview-chip">FastAPI</span>
+                  <span class="preview-chip">PostgreSQL</span>
+                  <span class="preview-chip">290+ DSA</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Panel 2: Embedded Systems -->
+          <div class="resume-content-panel" data-panel="embedded" role="tabpanel">
+            <div class="resume-info">
+              <h3>Embedded Systems & IoT</h3>
+              <p>
+                Targeted for Firmware Engineering, Robotics, and IoT product roles. Emphasizes hardware-software co-design, sensor acquisition pipelines, low-power microcontrollers, and real-time telemetry.
+              </p>
+              <ul class="resume-key-points">
+                <li><span class="check">&#10003;</span> ESP32, STM32, Arduino & Raspberry Pi hardware pipelines</li>
+                <li><span class="check">&#10003;</span> 50–100 Hz calibrated sensor telemetry & I2C/SPI interfaces</li>
+                <li><span class="check">&#10003;</span> Autonomous rover 8-axis kinematics at Technocrats Robotics</li>
+                <li><span class="check">&#10003;</span> Wearable glove translation system with low-latency inference</li>
+              </ul>
+              <div class="resume-actions">
+                <a href="EMBEDDED.pdf" target="_blank" rel="noopener" class="btn btn-primary">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                  <span>Open Embedded Resume (PDF)</span>
+                </a>
+                <a href="EMBEDDED.pdf" download="Mrinank_Gaur_Embedded_Resume.pdf" class="btn btn-secondary">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                  <span>Download File</span>
+                </a>
+              </div>
+            </div>
+            <div class="resume-preview-col">
+              <div class="resume-card-preview" style="border-left-color: var(--accent-emerald);">
+                <div class="preview-header">
+                  <span>MRINANK_GAUR_EMBEDDED_RESUME.PDF</span>
+                  <span class="mono">1-PAGE</span>
+                </div>
+                <div class="preview-line w-90"></div>
+                <div class="preview-line w-70"></div>
+                <div class="preview-line w-60"></div>
+                <div class="preview-line w-80"></div>
+                <div class="preview-chip-row">
+                  <span class="preview-chip" style="color:var(--accent-emerald)">ESP32</span>
+                  <span class="preview-chip" style="color:var(--accent-emerald)">Embedded C</span>
+                  <span class="preview-chip" style="color:var(--accent-emerald)">Kinematics</span>
+                  <span class="preview-chip" style="color:var(--accent-emerald)">I2C/SPI</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Panel 3: Electronics / VLSI -->
+          <div class="resume-content-panel" data-panel="electronics" role="tabpanel">
+            <div class="resume-info">
+              <h3>Electronics, Digital Design & VLSI</h3>
+              <p>
+                Specialized for Silicon Engineering, RTL Design, and Digital Verification. Focuses on bus protocol integration, Verilog RTL, Cadence EDA synthesis, and high-frequency DSP blocks.
+              </p>
+              <ul class="resume-key-points">
+                <li><span class="check">&#10003;</span> SoC APB-AHB bus bridge design & Cadence EDA verification</li>
+                <li><span class="check">&#10003;</span> 5 GHz target clock frequency pipelined MAC unit design</li>
+                <li><span class="check">&#10003;</span> Strong background in 8086/8051 assembly and digital circuits</li>
+                <li><span class="check">&#10003;</span> B.Tech in Electronics & Comm. Engineering (CGPA 8.97)</li>
+              </ul>
+              <div class="resume-actions">
+                <a href="ELECTRONICS.pdf" target="_blank" rel="noopener" class="btn btn-primary">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                  <span>Open Electronics Resume (PDF)</span>
+                </a>
+                <a href="ELECTRONICS.pdf" download="Mrinank_Gaur_Electronics_Resume.pdf" class="btn btn-secondary">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                  <span>Download File</span>
+                </a>
+              </div>
+            </div>
+            <div class="resume-preview-col">
+              <div class="resume-card-preview" style="border-left-color: var(--accent-violet);">
+                <div class="preview-header">
+                  <span>MRINANK_GAUR_VLSI_RESUME.PDF</span>
+                  <span class="mono">1-PAGE</span>
+                </div>
+                <div class="preview-line w-80"></div>
+                <div class="preview-line w-50"></div>
+                <div class="preview-line w-90"></div>
+                <div class="preview-line w-65"></div>
+                <div class="preview-chip-row">
+                  <span class="preview-chip" style="color:var(--accent-violet)">Verilog RTL</span>
+                  <span class="preview-chip" style="color:var(--accent-violet)">Cadence EDA</span>
+                  <span class="preview-chip" style="color:var(--accent-violet)">AHB/APB</span>
+                  <span class="preview-chip" style="color:var(--accent-violet)">5 GHz MAC</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="section-divider">
+
+    <!-- =======================================================================
+         CONTACT SECTION
+         ======================================================================= -->
+    <section class="section" id="contact" aria-labelledby="contact-heading">
+      <div class="container">
+        <div class="contact-box">
+          <div class="contact-left">
+            <span class="section-kicker">Start a Conversation</span>
+            <h2 class="contact-headline" id="contact-heading">
+              Let's build something that earns its place.
+            </h2>
+            <p class="contact-subtext">
+              Whether you are recruiting for software engineering, embedded systems, or high-performance product teams, my inbox is always open.
+            </p>
+            <div class="hero-actions" style="margin-bottom:0;">
+              <a href="mailto:mrinank2484@gmail.com?subject=Software%20Engineering%20Opportunity" class="btn btn-primary">
+                <span>Send Direct Email</span>
+                <span aria-hidden="true">&nearr;</span>
+              </a>
+              <button class="btn btn-secondary copy-trigger" data-copy="mrinank2484@gmail.com" data-label="Email address copied to clipboard!" type="button">
+                <span>Copy Address</span>
+                <span class="mono" style="font-size:0.75rem;opacity:0.8;">[mrinank2484@gmail.com]</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="contact-channels">
+            <div class="channel-card">
+              <div class="channel-info">
+                <div class="channel-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                </div>
+                <div class="channel-text">
+                  <strong>Direct Email</strong>
+                  <span>mrinank2484@gmail.com</span>
+                </div>
+              </div>
+              <button class="copy-btn copy-trigger" data-copy="mrinank2484@gmail.com" data-label="Email copied!" type="button">Copy</button>
+            </div>
+
+            <div class="channel-card">
+              <div class="channel-info">
+                <div class="channel-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                </div>
+                <div class="channel-text">
+                  <strong>LinkedIn Network</strong>
+                  <span>linkedin.com/in/mrinank-gaur</span>
+                </div>
+              </div>
+              <a href="https://www.linkedin.com/in/mrinank-gaur-252b53239/" target="_blank" rel="noopener" class="copy-btn">Connect &nearr;</a>
+            </div>
+
+            <div class="channel-card">
+              <div class="channel-info">
+                <div class="channel-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                </div>
+                <div class="channel-text">
+                  <strong>GitHub Profile</strong>
+                  <span>github.com/MrinankGaur</span>
+                </div>
+              </div>
+              <a href="https://github.com/MrinankGaur" target="_blank" rel="noopener" class="copy-btn">Follow &nearr;</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- =========================================================================
+       FOOTER
+       ========================================================================= -->
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <div>
+        <span>&copy; <span id="year"></span> Mrinank Gaur. Built with Vanilla Web Standards.</span>
+        <div style="font-size:0.75rem;margin-top:4px;" class="mono">Hosted on GitHub Pages · Zero trackers</div>
+      </div>
+      <div class="footer-links">
+        <a href="https://github.com/MrinankGaur" target="_blank" rel="noopener" class="footer-link">GitHub</a>
+        <a href="https://www.linkedin.com/in/mrinank-gaur-252b53239/" target="_blank" rel="noopener" class="footer-link">LinkedIn</a>
+        <a href="https://leetcode.com/u/mrinankgaur/" target="_blank" rel="noopener" class="footer-link">LeetCode</a>
+        <a href="#top" class="footer-link">Back to top &uarr;</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- =========================================================================
+       COMMAND PALETTE MODAL (Ctrl + K / Cmd + K)
+       ========================================================================= -->
+  <div class="cmd-modal-backdrop" id="cmd-modal" aria-hidden="true" role="dialog" aria-label="Command palette">
+    <div class="cmd-modal">
+      <div class="cmd-input-wrap">
+        <svg class="cmd-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <input type="text" class="cmd-input" id="cmd-input" placeholder="Type a command or jump to section..." autocomplete="off">
+        <span class="cmd-esc-key">ESC</span>
+      </div>
+
+      <ul class="cmd-results" id="cmd-results-list">
+        <li class="cmd-group-title">Navigation</li>
+        <li class="cmd-item selected" data-action="jump-work">
+          <div class="cmd-item-left">
+            <span>&#8594;</span>
+            <span>View Selected Work & Systems</span>
+          </div>
+          <span class="cmd-item-tag">Section</span>
+        </li>
+        <li class="cmd-item" data-action="jump-skills">
+          <div class="cmd-item-left">
+            <span>&#8594;</span>
+            <span>Technical Capabilities & Stack</span>
+          </div>
+          <span class="cmd-item-tag">Section</span>
+        </li>
+        <li class="cmd-item" data-action="jump-experience">
+          <div class="cmd-item-left">
+            <span>&#8594;</span>
+            <span>Experience & Leadership Timeline</span>
+          </div>
+          <span class="cmd-item-tag">Section</span>
+        </li>
+        <li class="cmd-item" data-action="jump-resumes">
+          <div class="cmd-item-left">
+            <span>&#8594;</span>
+            <span>Tailored Resumes (CS, Embedded, VLSI)</span>
+          </div>
+          <span class="cmd-item-tag">Section</span>
+        </li>
+        <li class="cmd-item" data-action="jump-contact">
+          <div class="cmd-item-left">
+            <span>&#8594;</span>
+            <span>Contact & Inquiries</span>
+          </div>
+          <span class="cmd-item-tag">Section</span>
+        </li>
+
+        <li class="cmd-group-title">Resumes & Downloads</li>
+        <li class="cmd-item" data-action="open-cs-resume">
+          <div class="cmd-item-left">
+            <span>&#128196;</span>
+            <span>Open Computer Science Resume (PDF)</span>
+          </div>
+          <span class="cmd-item-tag">CS.pdf</span>
+        </li>
+        <li class="cmd-item" data-action="open-embedded-resume">
+          <div class="cmd-item-left">
+            <span>&#128196;</span>
+            <span>Open Embedded Systems Resume (PDF)</span>
+          </div>
+          <span class="cmd-item-tag">EMBEDDED.pdf</span>
+        </li>
+        <li class="cmd-item" data-action="open-electronics-resume">
+          <div class="cmd-item-left">
+            <span>&#128196;</span>
+            <span>Open Electronics / VLSI Resume (PDF)</span>
+          </div>
+          <span class="cmd-item-tag">ELECTRONICS.pdf</span>
+        </li>
+
+        <li class="cmd-group-title">Quick Actions</li>
+        <li class="cmd-item" data-action="copy-email">
+          <div class="cmd-item-left">
+            <span>&#128203;</span>
+            <span>Copy Email (mrinank2484@gmail.com)</span>
+          </div>
+          <span class="cmd-item-tag">Clipboard</span>
+        </li>
+        <li class="cmd-item" data-action="toggle-theme">
+          <div class="cmd-item-left">
+            <span>&#9680;</span>
+            <span>Toggle Dark / Light Theme</span>
+          </div>
+          <span class="cmd-item-tag">Preference</span>
+        </li>
+        <li class="cmd-item" data-action="open-github">
+          <div class="cmd-item-left">
+            <span>&nearr;</span>
+            <span>Visit GitHub Profile</span>
+          </div>
+          <span class="cmd-item-tag">External</span>
+        </li>
+        <li class="cmd-item" data-action="open-linkedin">
+          <div class="cmd-item-left">
+            <span>&nearr;</span>
+            <span>Visit LinkedIn Profile</span>
+          </div>
+          <span class="cmd-item-tag">External</span>
+        </li>
+        <li class="cmd-item" data-action="open-leetcode">
+          <div class="cmd-item-left">
+            <span>&nearr;</span>
+            <span>Visit LeetCode Profile</span>
+          </div>
+          <span class="cmd-item-tag">External</span>
+        </li>
+      </ul>
+
+      <div class="cmd-footer">
+        <span>Use <kbd>&uarr;</kbd> <kbd>&darr;</kbd> to navigate, <kbd>Enter</kbd> to select</span>
+        <span><kbd>ESC</kbd> to dismiss</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       PROJECT ARCHITECTURE DEEP DIVE MODAL
+       ========================================================================= -->
+  <div class="modal-backdrop" id="project-modal" aria-hidden="true" role="dialog" aria-label="Project architecture details">
+    <div class="modal-dialog">
+      <button class="modal-close-btn" id="modal-close-btn" type="button" aria-label="Close dialog">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+
+      <span class="modal-badge" id="modal-category">Category</span>
+      <h3 class="modal-title" id="modal-title">Project Title</h3>
+
+      <div class="modal-section">
+        <h4 class="modal-section-title">Problem Statement & Purpose</h4>
+        <p class="modal-section-body" id="modal-problem"></p>
+      </div>
+
+      <div class="modal-section">
+        <h4 class="modal-section-title">System Architecture Flow</h4>
+        <pre class="modal-arch-box" id="modal-architecture"></pre>
+      </div>
+
+      <div class="modal-section">
+        <h4 class="modal-section-title">Engineering Decisions & Trade-offs</h4>
+        <p class="modal-section-body" id="modal-tech-details"></p>
+      </div>
+
+      <div class="modal-section" style="display:flex;gap:12px;margin-top:28px;">
+        <a href="#" target="_blank" rel="noopener" class="btn btn-primary btn-sm" id="modal-demo-btn">
+          <span>Open Live Demo</span>
+          <span aria-hidden="true">&nearr;</span>
+        </a>
+        <a href="#" target="_blank" rel="noopener" class="btn btn-secondary btn-sm" id="modal-repo-btn">
+          <span>View Source Code</span>
+          <span aria-hidden="true">&nearr;</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       TOAST NOTIFICATION
+       ========================================================================= -->
+  <div class="toast-container" aria-live="polite">
+    <div class="toast" id="site-toast">
+      <span class="toast-icon">&#10003;</span>
+      <span id="toast-message">Copied to clipboard!</span>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
 </body>
 </html>
